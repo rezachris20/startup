@@ -83,7 +83,6 @@ func authMiddleware(authService auth.Service, userService user.Service) gin.Hand
 			c.AbortWithStatusJSON(http.StatusUnauthorized, response)
 			return
 		}
-
 		//set context user
 		c.Set("currentUser", user)
 	}
