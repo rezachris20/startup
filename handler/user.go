@@ -172,6 +172,14 @@ func (h *userHandler) UploadAvatar(c *gin.Context) {
 	data := gin.H{"is_uploaded": true}
 	response := helper.APIResponse("Avatar successfully uploaded", http.StatusOK, "success", data)
 	c.JSON(http.StatusOK, response)
-	// repo ambil data user yang id nya 1
-	// repo update data user simpan lokasi url file
+}
+
+func (h *userHandler) FetchUser(c *gin.Context)  {
+	currentUser := c.MustGet("currentUser").(user.User)
+
+	formatter := user.FormatUser(currentUser,"")
+
+	response := helper.APIResponse("Successfully fetch user data",http.StatusOK,"success",formatter)
+
+	c.JSON(http.StatusOK, response)
 }
